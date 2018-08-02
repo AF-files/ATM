@@ -48,7 +48,7 @@ public class withdrawCon {
             FXMLLoader loaderNew = new FXMLLoader(getClass().getResource("main.fxml"));
             Parent rootNew = loaderNew.load();
             Stage openStage = new Stage();
-            openStage.setScene(new Scene(rootNew));
+            openStage.setScene(new Scene(rootNew, 300, 275));
             openStage.show();
         }catch (IOException e){
             System.out.println("Couldn't open window: "+e.getMessage());
