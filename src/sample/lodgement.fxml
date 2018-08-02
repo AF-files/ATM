@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:id="lodgePane" fx:controller="sample.lodgeCon" xmlns:fx="http://javafx.com/fxml" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label>How much are you lodging today?</Label>
+            <TextField fx:id="amountLodge"></TextField>
+            <Button fx:id="lodgeBut" onAction="#returnOrLeave">Lodge</Button>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox>
+            <Button fx:id="goBackBut">Go Back</Button>
+            <Button fx:id="exitBut">Exit</Button>
+        </HBox>
+    </bottom>
+</BorderPane>
+
