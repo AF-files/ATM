@@ -17,4 +17,10 @@ public class LoginController {
         int accNum = Integer.parseInt(acctemp);
         return Datasource.getInstance().checkCustomerPin(accNum,pinNum);
     }
+
+    public void setCustomer(){
+        String acctemp = accnum.getText();
+        int accNum = Integer.parseInt(acctemp);
+        Datasource.getInstance().getCustomer(accNum);
+    }
 }

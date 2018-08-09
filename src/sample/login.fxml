@@ -12,7 +12,7 @@
         <GridPane vgap="10" hgap="10">
             <Label text="Account Number" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             <TextField fx:id="accnum" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-            <Label text="Pin Number" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Label text="Pin Number" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
             <TextField fx:id="pinnum" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
         </GridPane>
     </content>

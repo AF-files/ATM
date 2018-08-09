@@ -9,7 +9,7 @@
     <top>
         <VBox BorderPane.alignment="BOTTOM_CENTER">
             <Label>BOI</Label>
-            <Label>Acc No:</Label>
+            <Label fx:id="accNumDisplay">Acc No:</Label>
         </VBox>
     </top>
     <center>

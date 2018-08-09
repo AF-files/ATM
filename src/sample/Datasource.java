@@ -10,7 +10,7 @@ public class Datasource {
 
     public static final String CHECK_PIN = "SELECT account_pin FROM BankAccountCustomer WHERE BankAccountCustomer.account_id = ?";
     private PreparedStatement checkPin;
-    public static final String GET_CUSTOMER = "SELECT * FROM BankAccountCustomer WHERE BankAccountCustomer.cus_name = ?";
+    public static final String GET_CUSTOMER = "SELECT * FROM BankAccountCustomer WHERE BankAccountCustomer.account_id = ?";
     private PreparedStatement getCustomer;
     public static final String UPDATE_CUSTOMER = "UPDATE BankAccountCustomer SET balance = ? WHERE BankAccountCustomer.account_id = ?";
     private PreparedStatement updateCustomer;
@@ -63,11 +63,41 @@ public class Datasource {
             checkPin.setInt(1,accNum);
             ResultSet result = checkPin.executeQuery();
             int realPin = result.getInt(1);
-            if(realPin != pin || result == null){
+            if(realPin != pin || result == null) {
                 return false;
-            }else{
+            } else{
                 return true;
             }
+        }catch (SQLException | NullPointerException e){
+            System.out.println("Error: "+e.getMessage());
+            return false;
+        }
+    }
+
+    public void getCustomer(int id){
+        try{
+            getCustomer.setInt(1,id);
+            ResultSet result = getCustomer.executeQuery();
+            int accNum = result.getInt(1);
+            double balance = result.getDouble(5);
+            Bank temp = new Bank("Halifax","luton",234567);
+            BankAccount.accNumber = accNum;
+            BankAccount.balance = balance;
+            BankAccount.bank = temp;
+        }catch (SQLException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+
+    public boolean updateCustomer(){
+        try {
+            double updatedBal = BankAccount.balance;
+            int accNum = BankAccount.accNumber;
+            updateCustomer.setDouble(1, updatedBal);
+            updateCustomer.setInt(2,accNum);
+            int update = updateCustomer.executeUpdate();
+
+            return update == 1;
         }catch (SQLException e){
             System.out.println("Error: "+e.getMessage());
             return false;
